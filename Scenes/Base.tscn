@@ -1,3 +1,36 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.5, 0.5, 0.5, 1 )
+ambient_light_sky_contribution = 0.5
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="Skin" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 25, 2, 25 )
 
 [node name="Spatial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.97008, 0.00104007, -0.242782, 0.106699, 0.896416, 0.430178, 0.218081, -0.443212, 0.869485, -0.352096, 3.23337, 6.83101 )
+shadow_enabled = true
+shadow_bias = 0.01
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh = SubResource( 5 )
+skin = SubResource( 4 )
