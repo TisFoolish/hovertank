@@ -34,3 +34,6 @@ skin = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 mesh = SubResource( 5 )
 skin = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.797026, 0.603946, 0, -0.603946, 0.797026, 0, 5.95856, 9.71525 )
