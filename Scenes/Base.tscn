@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0tca402shtyi"]
 
-[ext_resource type="PackedScene" uid="uid://txto3c7fqk4i" path="res://Scenes/Player.tscn" id="1_xjbj4"]
-[ext_resource type="PackedScene" uid="uid://n3jdf0tbyq0m" path="res://Scenes/TerribleArena.tscn" id="2_lmcqq"]
+[ext_resource type="PackedScene" uid="uid://bwgysq68xse4b" path="res://Scenes/player_tank.tscn" id="2_g8pnn"]
+[ext_resource type="PackedScene" uid="uid://bxmn6nltkbid6" path="res://Scenes/TerribleArena.tscn" id="2_lmcqq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tf7fk"]
 sky_top_color = Color(0.690196, 0.847059, 0.952941, 1)
@@ -48,7 +48,7 @@ mesh = SubResource("5")
 skin = SubResource("4")
 skeleton = NodePath("../..")
 
-[node name="Player" parent="." instance=ExtResource("1_xjbj4")]
-transform = Transform3D(-0.663939, 0, -0.747786, 0, 1, 0, 0.747786, 0, -0.663939, -25.5638, 0, -15.579)
-
 [node name="Node3D" parent="." instance=ExtResource("2_lmcqq")]
+
+[node name="PlayerTank" parent="." instance=ExtResource("2_g8pnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3686, 1, -11.8328)

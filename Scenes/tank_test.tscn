@@ -25,10 +25,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a3vwi")
 
 [node name="PlayerTank" parent="." instance=ExtResource("1_fldpv")]
 
-[node name="TestCamPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.465043, 0.885288, 0, -0.885288, 0.465043, 0, 8.95331, 9.80655)
-
-[node name="Camera3D" type="Camera3D" parent="TestCamPivot"]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.308635, 0.951181, 0, -0.951181, 0.308635, 0, 8.12938, 0)

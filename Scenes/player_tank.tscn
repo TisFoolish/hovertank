@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwgysq68xse4b"]
+[gd_scene load_steps=5 format=3 uid="uid://bwgysq68xse4b"]
 
 [ext_resource type="Script" path="res://Scenes/player_tank.gd" id="1_odbl2"]
+[ext_resource type="PackedScene" uid="uid://cl7tol1vwdsir" path="res://vehicle test.gltf" id="2_yamr0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_frsiu"]
 size = Vector3(2, 1, 1)
@@ -16,5 +17,14 @@ script = ExtResource("1_odbl2")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 mesh = SubResource("BoxMesh_frsiu")
 
+[node name="vehicle test" parent="Pivot" instance=ExtResource("2_yamr0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_b5agt")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.983163, 0.182733, 0, -0.182733, 0.983163, 0, 4.51831, 5.78005)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+fov = 76.2
