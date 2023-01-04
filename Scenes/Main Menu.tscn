@@ -1,0 +1,191 @@
+[gd_scene load_steps=7 format=3 uid="uid://cryqo7jrmlxlf"]
+
+[ext_resource type="PackedScene" uid="uid://k83y45rabskx" path="res://Scenes/Throbbing main menu .tscn" id="1_s0sfs"]
+
+[sub_resource type="GDScript" id="GDScript_ho8tv"]
+resource_name = "Main Menu Script"
+script/source = "extends Node2D
+
+var start = false
+var ha = false
+var exiting = false
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+func _process(delta):
+	if(start == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
+		get_tree().change_scene_to_file(\"res://Scenes/Base.tscn\")
+	elif(exiting == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
+		get_tree().quit() 
+	pass
+
+
+func _on_Start_pressed():
+
+	if(exiting == false && ha == false):
+		start = true
+		$AnimationPlayer.play(\"FadeOut\")
+
+
+func _on_Options_pressed():
+	if(ha == false):
+		ha = true
+		$AnimationPlayer.play(\"ha\")
+
+
+
+func _on_Exit_pressed():
+	if(exiting == false && ha == false):
+		exiting = true
+		$AnimationPlayer.play(\"FadeOut\")
+	
+
+func _on_animation_player_animation_finished(anim_name):
+	if(anim_name == \"ha\"):
+		ha = false
+		$AnimationPlayer.stop(true)
+"
+
+[sub_resource type="Animation" id="Animation_k4qbw"]
+resource_name = "ha"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rnx6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ipyy"]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxbkv"]
+_data = {
+"FadeOut": SubResource("Animation_8ipyy"),
+"RESET": SubResource("Animation_rnx6i"),
+"ha": SubResource("Animation_k4qbw")
+}
+
+[node name="Main Menu" type="Node2D"]
+script = SubResource("GDScript_ho8tv")
+metadata/_edit_vertical_guides_ = [-202.0, 640.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" parent="ColorRect" instance=ExtResource("1_s0sfs")]
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 616.0
+offset_top = 309.0
+offset_right = 664.0
+offset_bottom = 341.0
+grow_horizontal = 2
+text = "Start"
+flat = true
+
+[node name="Options" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 605.0
+offset_top = 352.0
+offset_right = 675.0
+offset_bottom = 384.0
+grow_horizontal = 2
+text = "Options
+"
+flat = true
+
+[node name="Exit" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 616.0
+offset_top = 417.0
+offset_right = 664.0
+offset_bottom = 449.0
+grow_horizontal = 2
+text = "Exit"
+flat = true
+
+[node name="RichTextLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 831.0
+offset_top = 175.0
+offset_right = 871.0
+offset_bottom = 215.0
+text = "ha"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rxbkv")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_right = 1332.0
+offset_bottom = 757.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
