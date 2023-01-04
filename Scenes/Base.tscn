@@ -1,13 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0tca402shtyi"]
+[gd_scene load_steps=9 format=3 uid="uid://d0tca402shtyi"]
 
-[ext_resource type="PackedScene" uid="uid://txto3c7fqk4i" path="res://Scenes/Player.tscn" id="1_xjbj4"]
-
-[sub_resource type="BoxMesh" id="3"]
-
-[sub_resource type="Skin" id="4"]
-
-[sub_resource type="BoxMesh" id="5"]
-size = Vector3(25, 1, 25)
+[ext_resource type="PackedScene" uid="uid://bwgysq68xse4b" path="res://Scenes/player_tank.tscn" id="2_g8pnn"]
+[ext_resource type="PackedScene" uid="uid://bxmn6nltkbid6" path="res://Scenes/TerribleArena.tscn" id="2_lmcqq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tf7fk"]
 sky_top_color = Color(0.690196, 0.847059, 0.952941, 1)
@@ -22,26 +16,41 @@ sky_material = SubResource("ProceduralSkyMaterial_tf7fk")
 background_mode = 2
 sky = SubResource("Sky_wletu")
 
+[sub_resource type="BoxMesh" id="3"]
+
+[sub_resource type="Skin" id="4"]
+
+[sub_resource type="BoxMesh" id="5"]
+size = Vector3(25, 1, 25)
+
 [node name="Node3D" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39535, 1, 1.55859)
-mesh = SubResource("3")
-skin = SubResource("4")
-
-[node name="MeshInstance2" type="MeshInstance3D" parent="."]
-mesh = SubResource("5")
-skin = SubResource("4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_boa1p")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.97008, 0.00104054, -0.242782, 0.106699, 0.896416, 0.430178, 0.218081, -0.443212, 0.869485, -0.352096, 3.23337, 6.83101)
+light_energy = 1.4
 shadow_enabled = true
 shadow_bias = 0.04
 shadow_opacity = 0.7
-directional_shadow_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1_xjbj4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496332, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39535, 1, 1.55859)
+visible = false
+mesh = SubResource("3")
+skin = SubResource("4")
+
+[node name="MeshInstance2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.39535, -1, -1.55859)
+visible = false
+mesh = SubResource("5")
+skin = SubResource("4")
+skeleton = NodePath("../..")
+
+[node name="Node3D" parent="." instance=ExtResource("2_lmcqq")]
+
+[node name="PlayerTank" parent="." instance=ExtResource("2_g8pnn")]
+transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)
+MAX_ROTATION_SPEED = 0.021
+ACCLERATION = 0.3
