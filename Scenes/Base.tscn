@@ -51,4 +51,6 @@ skeleton = NodePath("../..")
 [node name="Node3D" parent="." instance=ExtResource("2_lmcqq")]
 
 [node name="PlayerTank" parent="." instance=ExtResource("2_g8pnn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3686, 1, -11.8328)
+transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)
+MAX_ROTATION_SPEED = 0.021
+ACCLERATION = 0.3
