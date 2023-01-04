@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://n3jdf0tbyq0m"]
+
+[ext_resource type="Material" uid="uid://c67jdkif7a767" path="res://Assets/Textures/dev/grid material.tres" id="1_ufk15"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(66, 8, 54)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 3, 11)
+operation = 2
+size = Vector3(14, 8, 28)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, 0.5, 10, 3, 13)
+operation = 2
+size = Vector3(12, 8, 24)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 11)
+operation = 2
+size = Vector3(18, 8, 28)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -17)
+operation = 2
+size = Vector3(32, 8, 16)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -19, 3, -8)
+operation = 2
+size = Vector3(20, 8, 26)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 3, -11)
+operation = 2
+size = Vector3(18, 8, 12)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 16, 3, -7)
+operation = 2
+size = Vector3(18, 8, 8)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 3, 21)
+operation = 2
+size = Vector3(8, 8, 14)
+material = ExtResource("1_ufk15")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25, 3, 10)
+operation = 2
+size = Vector3(14, 8, 10)
+material = ExtResource("1_ufk15")
