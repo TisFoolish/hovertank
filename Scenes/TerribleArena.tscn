@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://c67jdkif7a767" path="res://Assets/Textures/dev/grid material.tres" id="1_ufk15"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Arena" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

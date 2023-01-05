@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/player_tank.gd" id="1_odbl2"]
 [ext_resource type="PackedScene" uid="uid://cl7tol1vwdsir" path="res://Assets/Models/vehicle test.gltf" id="2_yamr0"]
-[ext_resource type="PackedScene" uid="uid://72wqak3ygr3o" path="res://vehicle v1.gltf" id="3_kb8wl"]
+[ext_resource type="PackedScene" uid="uid://72wqak3ygr3o" path="res://Assets/Models/vehicle v1.gltf" id="3_kb8wl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_frsiu"]
 size = Vector3(2, 1, 1)
