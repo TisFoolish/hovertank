@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var MAX_ROTATION_SPEED = 0.01
 
 @export var ACCLERATION = 20
-@export var ANGULAR_ACC = .08
+@export var MAX_ANGULAR_ACC = .08
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -30,9 +30,11 @@ func _physics_process(delta):
 
 
 	var combined_velocity = (transform.basis * Vector3(combined_x, 0, combined_y)).normalized()
-#	print_debug("### Combined Velocity: ", combined_velocity)
-	
-	rotation_strength = move_toward(rotation_strength, left_input_dir.y + (right_input_dir.y * -1.0), ANGULAR_ACC)
+	print_debug("### Combined Velocity: ", combined_velocity)
+	var total_angular_acc = (MAX_ANGULAR_ACC/2 * abs(left_input_dir.y)) + (MAX_ANGULAR_ACC/2 * abs(right_input_dir.y))
+	if (total_angular_acc == 0):
+		total_angular_acc = MAX_ANGULAR_ACC
+	rotation_strength = move_toward(rotation_strength, (left_input_dir.y + (right_input_dir.y * -1.0)) * MAX_ROTATION_SPEED, total_angular_acc * delta)
 	
 	#If both inputs are 0 or if both inputs are not Zero (meaning the player is pressing buttons on both sides, not just one side
 	# 	calculate velocity as normal
@@ -42,22 +44,26 @@ func _physics_process(delta):
 	if((left_input_dir.length() == 0 && right_input_dir.length() == 0) || (left_input_dir.length() != 0 && right_input_dir.length() != 0)):
 		calculate_velocity(combined_velocity,delta)
 	else:
-		
 		if(Input.is_action_pressed("left_hover_bank_forward") || 
 				Input.is_action_pressed("left_hover_bank_backward") || 
 				Input.is_action_pressed("right_hover_bank_forward") || 
 				Input.is_action_pressed("right_hover_bank_backward")):
 			combined_velocity.x = 0
 			combined_velocity.z = 0
-		
+		if(Input.is_action_pressed("left_hover_bank_left") || 
+				Input.is_action_pressed("left_hover_bank_right") || 
+				Input.is_action_pressed("right_hover_bank_left") || 
+				Input.is_action_pressed("right_hover_bank_right")):
+			combined_velocity.x = combined_velocity.x/2
+			
 		calculate_velocity(combined_velocity,delta)
 	move_and_slide()
 
 
 func calculate_velocity(combined_velocity,delta):
 	velocity = velocity.move_toward(combined_velocity*MAX_SPEED, delta * ACCLERATION)
-	print("Velocity X: ", velocity.x)
-	print("Velocity Z: ", velocity.z)
+#	print("Velocity X: ", velocity.x)
+#	print("Velocity Z: ", velocity.z)
 	if(rotation_strength != 0.0):
-		rotate_object_local(Vector3(Vector3.UP), rotation_strength * MAX_ROTATION_SPEED)
+		rotate_object_local(Vector3(Vector3.UP), rotation_strength)
 		transform = transform.orthonormalized()
