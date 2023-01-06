@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_unx67"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3jbe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uhg2"]
 albedo_color = Color(0.847059, 0.505882, 0, 1)
 metallic = 1.0
 metallic_specular = 1.0
@@ -10,15 +10,15 @@ roughness = 0.27
 rim_enabled = true
 rim_tint = 0.37
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0yu0f"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bag32"]
 lightmap_size_hint = Vector2i(3, 3)
-material = SubResource("StandardMaterial3D_e3jbe")
+material = SubResource("StandardMaterial3D_0uhg2")
 radius = 0.05
 height = 0.2
 radial_segments = 8
 rings = 1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pp34c"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_83fko"]
 radius = 0.05
 height = 0.2
 
@@ -27,11 +27,11 @@ script = ExtResource("1_unx67")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_0yu0f")
+mesh = SubResource("CapsuleMesh_bag32")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_pp34c")
+shape = SubResource("CapsuleShape3D_83fko")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 5.0

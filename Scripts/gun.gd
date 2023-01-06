@@ -4,6 +4,12 @@ const bullet = preload("res://Scenes/Weapons/Boo let.tscn")
 
 var weapon_state : bool = true
 
+var gunsound
+
+
+func _ready():
+	gunsound = $GunFire
+
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
 	if(Input.is_action_pressed("fire_weapon")):
@@ -25,6 +31,7 @@ func _on_timer_timeout():
 	if(Input.is_action_pressed("fire_weapon") && weapon_state == true):
 		var newBullet = bullet.instantiate()
 		get_tree().get_root().add_child(newBullet)
+		gunsound.play()
 		newBullet.speed = 60
 		newBullet.position = $BulletSpawnPoint.global_position
 		newBullet.rotation = $BulletSpawnPoint.global_rotation

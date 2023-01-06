@@ -32,4 +32,4 @@ shadow_opacity = 0.7
 transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)
 
 [node name="Level_PurpleCliiffs" parent="." instance=ExtResource("1_x2fws")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.220959, -7.62939e-06, -0.0158539)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.220959, -7.62939e-06, -0.0158539)
