@@ -6,19 +6,26 @@ extends CharacterBody3D
 #Rotation Speed in ????
 @export var MAX_ROTATION_SPEED = 0.2
 
-@export var ACCLERATION = 60
+@export var ACCLERATION = 40
 @export var MAX_ANGULAR_ACC = .45
 # Get the gravity from the project settings to be synced with RigidBody nodes.
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var rotation_strength = 0
+var engineHum
+
+func _ready():
+	engineHum = $AudioStreamPlayer3D
+	engineHum.play()
+	
 
 func _physics_process(delta):
 #	print_debug("### RL VELOCITY:", velocity)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
 
 	var left_input_dir = Input.get_vector("left_hover_bank_left", "left_hover_bank_right", "left_hover_bank_forward", "left_hover_bank_backward") * 0.5
 	var right_input_dir = Input.get_vector("right_hover_bank_left", "right_hover_bank_right", "right_hover_bank_forward","right_hover_bank_backward") * 0.5
@@ -56,11 +63,15 @@ func _physics_process(delta):
 			combined_velocity.x = combined_velocity.x/2
 			
 		calculate_velocity(combined_velocity,delta)
+	
+	print("Velocity Normalized Length: ", velocity.normalized().length())
+	
 	move_and_slide()
 
 
 func calculate_velocity(combined_velocity,delta):
 	velocity = velocity.move_toward(combined_velocity*MAX_SPEED, delta * ACCLERATION)
+	engineHum.pitch_scale = move_toward(engineHum.pitch_scale, 1 + combined_velocity.normalized().length(), delta) 
 #	print("Velocity X: ", velocity.x)
 #	print("Velocity Z: ", velocity.z)
 	if(rotation_strength != 0.0):
