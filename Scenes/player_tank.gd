@@ -2,12 +2,12 @@ extends CharacterBody3D
 
 
 
-@export var MAX_SPEED = 20
+@export var MAX_SPEED = 100
 #Rotation Speed in ????
-@export var MAX_ROTATION_SPEED = 0.01
+@export var MAX_ROTATION_SPEED = 0.2
 
-@export var ACCLERATION = 20
-@export var MAX_ANGULAR_ACC = .08
+@export var ACCLERATION = 60
+@export var MAX_ANGULAR_ACC = .45
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
