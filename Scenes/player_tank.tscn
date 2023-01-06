@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csw42kllprn5w"]
+[gd_scene load_steps=6 format=3 uid="uid://csw42kllprn5w"]
 
 [ext_resource type="Script" path="res://Scenes/player_tank.gd" id="1_odbl2"]
 [ext_resource type="PackedScene" uid="uid://c5t3whvgo76tx" path="res://Assets/Models/Vehicle/vehicle_v2.gltf" id="2_dh5u2"]
+[ext_resource type="PackedScene" uid="uid://ceomy0gm7cb4d" path="res://Scenes/Weapons/gun.tscn" id="2_e2c3b"]
 [ext_resource type="AudioStream" uid="uid://cmb7h8yl146e6" path="res://Assets/Audio/SoundFX/Background Energy Hum.wav" id="3_ip8og"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5agt"]
@@ -11,6 +12,9 @@ size = Vector3(3.38989, 2.36442, 4.51703)
 script = ExtResource("1_odbl2")
 
 [node name="Pivot" type="Node3D" parent="."]
+
+[node name="Gun" parent="Pivot" instance=ExtResource("2_e2c3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877363, 0.240253, -0.763121)
 
 [node name="vehicle_v2" parent="Pivot" instance=ExtResource("2_dh5u2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
