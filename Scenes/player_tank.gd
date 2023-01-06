@@ -64,8 +64,6 @@ func _physics_process(delta):
 			
 		calculate_velocity(combined_velocity,delta)
 	
-	print("Velocity Normalized Length: ", velocity.normalized().length())
-	
 	move_and_slide()
 
 
