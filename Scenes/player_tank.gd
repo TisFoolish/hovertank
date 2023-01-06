@@ -30,7 +30,6 @@ func _physics_process(delta):
 
 
 	var combined_velocity = (transform.basis * Vector3(combined_x, 0, combined_y)).normalized()
-	print_debug("### Combined Velocity: ", combined_velocity)
 	var total_angular_acc = (MAX_ANGULAR_ACC/2 * abs(left_input_dir.y)) + (MAX_ANGULAR_ACC/2 * abs(right_input_dir.y))
 	if (total_angular_acc == 0):
 		total_angular_acc = MAX_ANGULAR_ACC
