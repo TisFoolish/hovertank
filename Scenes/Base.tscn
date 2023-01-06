@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0tca402shtyi"]
+[gd_scene load_steps=6 format=3 uid="uid://d0tca402shtyi"]
 
+[ext_resource type="PackedScene" uid="uid://bhfkuuoayy0ak" path="res://Scenes/Levels/level_purple_cliiffs.tscn" id="1_x2fws"]
 [ext_resource type="PackedScene" uid="uid://csw42kllprn5w" path="res://Scenes/player_tank.tscn" id="2_g8pnn"]
-[ext_resource type="PackedScene" uid="uid://bxmn6nltkbid6" path="res://Scenes/TerribleArena.tscn" id="2_lmcqq"]
-[ext_resource type="Material" uid="uid://c67jdkif7a767" path="res://Assets/Textures/dev/grid material.tres" id="3_tm56e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tf7fk"]
 sky_top_color = Color(0.690196, 0.847059, 0.952941, 1)
@@ -29,123 +28,8 @@ shadow_enabled = true
 shadow_bias = 0.04
 shadow_opacity = 0.7
 
-[node name="Arena" parent="." instance=ExtResource("2_lmcqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-
 [node name="PlayerTank" parent="." instance=ExtResource("2_g8pnn")]
 transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-size = Vector3(3000, 1, 3000)
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461878, 4.39861, -11.0789)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.7122, 4.39861, 359.991)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 292.611, 4.39861, -42.7947)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.878, 4.39861, -84.3081)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301.609, 4.39861, -290.333)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 284.485, 4.39861, 71.3982)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.6558, 4.39861, 78.6059)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.812, 4.39861, 82.2401)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4938, 4.39861, -202.091)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.627, 4.39861, -169.988)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.033, 4.39861, 242.094)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.1728, 4.39862, 208.418)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -208.736, 4.39862, 310.285)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.695, 4.39862, -69.2152)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.903, 4.39862, -452.078)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.731, 4.39862, -561.545)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299.18, 4.39862, 155.706)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
-
-[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299.18, 4.39862, 155.706)
-radius = 3.36633
-height = 8.98562
-material = ExtResource("3_tm56e")
+[node name="Level_PurpleCliiffs" parent="." instance=ExtResource("1_x2fws")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.220959, -7.62939e-06, -0.0158539)
