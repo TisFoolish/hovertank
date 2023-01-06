@@ -1,0 +1,180 @@
+[gd_scene load_steps=10 format=3 uid="uid://djd186wcoe10c"]
+
+[ext_resource type="PackedScene" path="res://Scenes/TerribleArena.tscn" id="1_vijq1"]
+[ext_resource type="PackedScene" uid="uid://csw42kllprn5w" path="res://Scenes/player_tank.tscn" id="2_mj8wd"]
+[ext_resource type="Material" path="res://Assets/Models/Textures/dev/grid material.tres" id="3_s6yjc"]
+[ext_resource type="PackedScene" uid="uid://clygaq0krgud6" path="res://Assets/Models/Props/solar array.gltf" id="5_01bqk"]
+[ext_resource type="PackedScene" uid="uid://ba2a5r727o414" path="res://Assets/Models/Level/crater level.gltf" id="5_v5vpx"]
+[ext_resource type="PackedScene" uid="uid://cp3e4t8ou8gc6" path="res://Assets/Models/Props/oxygen tanks.glb" id="6_lkso7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tf7fk"]
+sky_top_color = Color(0.105882, 0.0235294, 0.262745, 1)
+sky_horizon_color = Color(0.239216, 0.0431373, 0.403922, 1)
+sky_curve = 0.0675939
+sky_energy_multiplier = 0.75
+ground_bottom_color = Color(0.0736551, 0.0119831, 0.118223, 1)
+ground_horizon_color = Color(0.137255, 0.0196078, 0.305882, 1)
+sun_angle_max = 45.0
+sun_curve = 0.0832179
+
+[sub_resource type="Sky" id="Sky_wletu"]
+sky_material = SubResource("ProceduralSkyMaterial_tf7fk")
+
+[sub_resource type="Environment" id="Environment_boa1p"]
+background_mode = 2
+sky = SubResource("Sky_wletu")
+fog_light_color = Color(0.682353, 0.509804, 0.843137, 1)
+fog_density = 0.001
+fog_height = -49.64
+fog_height_density = 10.0848
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_boa1p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.722613, 0.460144, -0.515846, 0.0128673, 0.737165, 0.67559, 0.691132, -0.494828, 0.526765, -0.352096, 3.23337, 6.83101)
+light_color = Color(0.952941, 0.772549, 0.6, 1)
+light_energy = 1.5
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_opacity = 0.7
+
+[node name="Arena" parent="." instance=ExtResource("1_vijq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+visible = false
+
+[node name="PlayerTank" parent="." instance=ExtResource("2_mj8wd")]
+transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.369, 2, -11.833)
+MAX_SPEED = 25
+MAX_ROTATION_SPEED = 0.1
+ACCLERATION = 20
+MAX_ANGULAR_ACC = 0.15
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+visible = false
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(3000, 1, 3000)
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461878, 4.39861, -11.0789)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.7122, 4.39861, 359.991)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 292.611, 4.39861, -42.7947)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.878, 4.39861, -84.3081)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301.609, 4.39861, -290.333)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 284.485, 4.39861, 71.3982)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.6558, 4.39861, 78.6059)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.812, 4.39861, 82.2401)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4938, 4.39861, -202.091)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.627, 4.39861, -169.988)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.033, 4.39861, 242.094)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.1728, 4.39862, 208.418)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -208.736, 4.39862, 310.285)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.695, 4.39862, -69.2152)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.903, 4.39862, -452.078)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.731, 4.39862, -561.545)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299.18, 4.39862, 155.706)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299.18, 4.39862, 155.706)
+radius = 3.36633
+height = 8.98562
+material = ExtResource("3_s6yjc")
+
+[node name="solar array" parent="." instance=ExtResource("5_01bqk")]
+transform = Transform3D(0.402507, 0, -0.915417, 0, 1, 0, 0.915417, 0, 0.402507, -7.576, 0.976919, -5.283)
+
+[node name="crater level" parent="." instance=ExtResource("5_v5vpx")]
+
+[node name="oxygen tanks" parent="." instance=ExtResource("6_lkso7")]
+transform = Transform3D(-0.973707, 0, -0.783833, 0, 1.25, 0, 0.783833, 0, -0.973707, -13.2118, 1, -13.0085)
+
+[node name="solar array2" parent="." instance=ExtResource("5_01bqk")]
+transform = Transform3D(0.83429, 0, -0.551326, 0, 1, 0, 0.551326, 0, 0.83429, -21.944, 1, -6.033)
