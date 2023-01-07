@@ -1,32 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0tca402shtyi"]
+[gd_scene load_steps=4 format=3 uid="uid://d0tca402shtyi"]
 
+[ext_resource type="PackedScene" uid="uid://8e3ffov7vtw" path="res://Scenes/world_environment.tscn" id="1_t42kr"]
 [ext_resource type="PackedScene" uid="uid://bhfkuuoayy0ak" path="res://Scenes/Levels/level_purple_cliiffs.tscn" id="1_x2fws"]
 [ext_resource type="PackedScene" uid="uid://csw42kllprn5w" path="res://Scenes/player_tank.tscn" id="2_g8pnn"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tf7fk"]
-sky_top_color = Color(0.690196, 0.847059, 0.952941, 1)
-sky_horizon_color = Color(0.494118, 0.615686, 0.741176, 1)
-ground_bottom_color = Color(0.100757, 0.121007, 0.0816506, 1)
-ground_horizon_color = Color(0.494118, 0.615686, 0.741176, 1)
-
-[sub_resource type="Sky" id="Sky_wletu"]
-sky_material = SubResource("ProceduralSkyMaterial_tf7fk")
-
-[sub_resource type="Environment" id="Environment_boa1p"]
-background_mode = 2
-sky = SubResource("Sky_wletu")
-
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_boa1p")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.97008, 0.00104054, -0.242782, 0.106699, 0.896416, 0.430178, 0.218081, -0.443212, 0.869485, -0.352096, 3.23337, 6.83101)
-light_energy = 1.4
-shadow_enabled = true
-shadow_bias = 0.04
-shadow_opacity = 0.7
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_t42kr")]
 
 [node name="PlayerTank" parent="." instance=ExtResource("2_g8pnn")]
 transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)

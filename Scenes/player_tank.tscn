@@ -14,7 +14,7 @@ script = ExtResource("1_odbl2")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Gun" parent="Pivot" instance=ExtResource("2_e2c3b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877363, 0.240253, -0.763121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877363, 0.240253, -1.19139)
 
 [node name="vehicle_v2" parent="Pivot" instance=ExtResource("2_dh5u2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

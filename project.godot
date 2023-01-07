@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/Main Menu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [input]
 
 left_hover_bank_forward={

@@ -36,7 +36,6 @@ size = Vector3(57.7411, 31.7128, 16.3228)
 [node name="Level_PurpleCliiffs" type="StaticBody3D"]
 
 [node name="PurpleCliffsComplexShapeCollider" parent="." instance=ExtResource("1_qli5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.9669, 0)
 
 [node name="Level01" parent="." instance=ExtResource("1_ipps6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60847, 0)

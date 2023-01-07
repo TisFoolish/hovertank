@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cryqo7jrmlxlf"]
+[gd_scene load_steps=12 format=3 uid="uid://cryqo7jrmlxlf"]
 
 [ext_resource type="PackedScene" uid="uid://k83y45rabskx" path="res://Scenes/Throbbing main menu .tscn" id="1_s0sfs"]
+[ext_resource type="PackedScene" uid="uid://cgqd3owkjf7tq" path="res://Scenes/Levels/menu_view.tscn" id="2_7hhct"]
+[ext_resource type="AudioStream" uid="uid://sstjuu1woq62" path="res://Assets/Audio/SoundFX/wind loop.wav" id="3_18cqm"]
 
 [sub_resource type="GDScript" id="GDScript_ho8tv"]
 resource_name = "Main Menu Script"
@@ -56,7 +58,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/path = NodePath("AnimationPlayer/ColorRect2:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -83,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/path = NodePath("AnimationPlayer/ColorRect2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,53 +118,93 @@ _data = {
 "ha": SubResource("Animation_k4qbw")
 }
 
+[sub_resource type="Animation" id="Animation_yqfw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_atah1"]
+resource_name = "test"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.841, 5.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nffjw"]
+_data = {
+"RESET": SubResource("Animation_yqfw0"),
+"test": SubResource("Animation_atah1")
+}
+
 [node name="Main Menu" type="Node2D"]
 script = SubResource("GDScript_ho8tv")
 metadata/_edit_vertical_guides_ = [-202.0, 640.0]
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" parent="ColorRect" instance=ExtResource("1_s0sfs")]
+[node name="Throbbing Text" parent="." instance=ExtResource("1_s0sfs")]
 
-[node name="Start" type="Button" parent="."]
+[node name="Menu Buttons" type="Node2D" parent="."]
+position = Vector2(138, 453)
+
+[node name="Start" type="Button" parent="Menu Buttons"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 616.0
-offset_top = 309.0
-offset_right = 664.0
-offset_bottom = 341.0
+offset_left = -25.0
+offset_top = 11.0
+offset_right = 23.0
+offset_bottom = 43.0
 grow_horizontal = 2
 text = "Start"
-flat = true
 
-[node name="Options" type="Button" parent="."]
+[node name="Options" type="Button" parent="Menu Buttons"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 605.0
-offset_top = 352.0
-offset_right = 675.0
-offset_bottom = 384.0
+offset_left = -36.0
+offset_top = 54.0
+offset_right = 34.0
+offset_bottom = 86.0
 grow_horizontal = 2
 text = "Options
 "
-flat = true
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="Menu Buttons"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 616.0
-offset_top = 417.0
-offset_right = 664.0
-offset_bottom = 449.0
+offset_left = -25.0
+offset_top = 119.0
+offset_right = 23.0
+offset_bottom = 151.0
 grow_horizontal = 2
 text = "Exit"
-flat = true
 
 [node name="RichTextLabel" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -177,7 +219,7 @@ libraries = {
 "": SubResource("AnimationLibrary_rxbkv")
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="AnimationPlayer"]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 offset_right = 1332.0
@@ -185,7 +227,29 @@ offset_bottom = 757.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = -1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Menu View" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_7hhct")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_18cqm")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AudioStreamPlayer2D"]
+autoplay = "test"
+libraries = {
+"": SubResource("AnimationLibrary_nffjw")
+}
+
+[connection signal="pressed" from="Menu Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Menu Buttons/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Menu Buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
