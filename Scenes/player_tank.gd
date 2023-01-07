@@ -19,9 +19,7 @@ func _ready():
 	engineHum = $AudioStreamPlayer3D
 	engineHum.play()
 	
-func _process(delta):
-	if(Input.is_action_pressed("escape")):
-		get_tree().quit() 
+
 
 func _physics_process(delta):
 #	print_debug("### RL VELOCITY:", velocity)

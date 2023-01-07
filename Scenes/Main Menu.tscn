@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cryqo7jrmlxlf"]
+[gd_scene load_steps=13 format=3 uid="uid://cryqo7jrmlxlf"]
 
 [ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_fv65s"]
 [ext_resource type="PackedScene" uid="uid://cgqd3owkjf7tq" path="res://Scenes/Levels/menu_view.tscn" id="2_7hhct"]
 [ext_resource type="AudioStream" uid="uid://sstjuu1woq62" path="res://Assets/Audio/SoundFX/wind loop.wav" id="3_18cqm"]
+[ext_resource type="PackedScene" uid="uid://bsyhpnwvtnylf" path="res://Scenes/window_input.tscn" id="4_nilvi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2kct6"]
 font_size = 30
@@ -177,12 +178,14 @@ color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 z_index = -1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1280.0
+offset_bottom = 720.0
 mouse_filter = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
+msaa_3d = 2
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
@@ -198,7 +201,10 @@ libraries = {
 "": SubResource("AnimationLibrary_nffjw")
 }
 
+[node name="WindowInput" parent="." instance=ExtResource("4_nilvi")]
+
 [connection signal="pressed" from="Node2D/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Node2D/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Node2D/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="resolution_changed" from="WindowInput" to="." method="_on_window_input_resolution_changed"]

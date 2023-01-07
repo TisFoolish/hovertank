@@ -11,8 +11,6 @@ func _ready():
 
 
 func _process(delta):
-	if(Input.is_action_pressed("escape")):
-		get_tree().quit() 
 	if(start == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
 		get_tree().change_scene_to_file("res://Scenes/Base.tscn")
 	elif(exiting == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
@@ -47,3 +45,8 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 
+
+
+func _on_window_input_resolution_changed():
+	$SubViewportContainer/SubViewport.size = DisplayServer.window_get_size_with_decorations()
+	pass # Replace with function body.
