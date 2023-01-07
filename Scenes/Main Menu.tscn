@@ -1,56 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://cryqo7jrmlxlf"]
 
-[ext_resource type="PackedScene" uid="uid://k83y45rabskx" path="res://Scenes/Throbbing main menu .tscn" id="1_s0sfs"]
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_fv65s"]
 [ext_resource type="PackedScene" uid="uid://cgqd3owkjf7tq" path="res://Scenes/Levels/menu_view.tscn" id="2_7hhct"]
 [ext_resource type="AudioStream" uid="uid://sstjuu1woq62" path="res://Assets/Audio/SoundFX/wind loop.wav" id="3_18cqm"]
 
-[sub_resource type="GDScript" id="GDScript_ho8tv"]
-resource_name = "Main Menu Script"
-script/source = "extends Node2D
-
-var start = false
-var ha = false
-var exiting = false
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(delta):
-	if(start == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
-		get_tree().change_scene_to_file(\"res://Scenes/Base.tscn\")
-	elif(exiting == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
-		get_tree().quit() 
-	pass
-
-
-func _on_Start_pressed():
-
-	if(exiting == false && ha == false):
-		start = true
-		$AnimationPlayer.play(\"FadeOut\")
-
-
-func _on_Options_pressed():
-	if(ha == false):
-		ha = true
-		$AnimationPlayer.play(\"ha\")
-
-
-
-func _on_Exit_pressed():
-	if(exiting == false && ha == false):
-		exiting = true
-		$AnimationPlayer.play(\"FadeOut\")
-	
-
-func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == \"ha\"):
-		ha = false
-		$AnimationPlayer.stop(true)
-"
+[sub_resource type="LabelSettings" id="LabelSettings_2kct6"]
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_8ipyy"]
 resource_name = "FadeOut"
@@ -157,62 +114,53 @@ _data = {
 }
 
 [node name="Main Menu" type="Node2D"]
-script = SubResource("GDScript_ho8tv")
+script = ExtResource("1_fv65s")
 metadata/_edit_vertical_guides_ = [-202.0, 640.0]
-metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0, 0, 0, 1)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(128, 468)
 
-[node name="Throbbing Text" parent="." instance=ExtResource("1_s0sfs")]
-
-[node name="Menu Buttons" type="Node2D" parent="."]
-position = Vector2(138, 453)
-
-[node name="Start" type="Button" parent="Menu Buttons"]
+[node name="Start" type="Button" parent="Node2D"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
-offset_top = 11.0
-offset_right = 23.0
-offset_bottom = 43.0
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 32.0
 grow_horizontal = 2
 text = "Start"
 
-[node name="Options" type="Button" parent="Menu Buttons"]
+[node name="Options" type="Button" parent="Node2D"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -36.0
-offset_top = 54.0
-offset_right = 34.0
-offset_bottom = 86.0
+offset_left = -35.0
+offset_top = 43.0
+offset_right = 35.0
+offset_bottom = 75.0
 grow_horizontal = 2
 text = "Options
 "
 
-[node name="Exit" type="Button" parent="Menu Buttons"]
+[node name="Exit" type="Button" parent="Node2D"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
-offset_top = 119.0
-offset_right = 23.0
-offset_bottom = 151.0
+offset_left = -24.0
+offset_top = 108.0
+offset_right = 24.0
+offset_bottom = 140.0
 grow_horizontal = 2
 text = "Exit"
 
 [node name="RichTextLabel" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 831.0
-offset_top = 175.0
-offset_right = 871.0
-offset_bottom = 215.0
+offset_left = 233.0
+offset_top = 497.0
+offset_right = 273.0
+offset_bottom = 537.0
 text = "ha"
+label_settings = SubResource("LabelSettings_2kct6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -231,6 +179,7 @@ color = Color(0, 0, 0, 1)
 z_index = -1
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -249,7 +198,7 @@ libraries = {
 "": SubResource("AnimationLibrary_nffjw")
 }
 
-[connection signal="pressed" from="Menu Buttons/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Menu Buttons/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Menu Buttons/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Node2D/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Node2D/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Node2D/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
