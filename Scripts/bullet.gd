@@ -16,6 +16,6 @@ func _physics_process(delta):
 			collider.targetdie()
 		queue_free()
 
+
 func _on_death_timer_timeout():
-	print("dead")
 	queue_free()

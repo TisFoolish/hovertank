@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_fv65s"]
 [ext_resource type="PackedScene" uid="uid://cgqd3owkjf7tq" path="res://Scenes/Levels/menu_view.tscn" id="2_7hhct"]
-[ext_resource type="AudioStream" uid="uid://sstjuu1woq62" path="res://Assets/Audio/SoundFX/wind loop.wav" id="3_18cqm"]
-[ext_resource type="PackedScene" uid="uid://bsyhpnwvtnylf" path="res://Scenes/window_input.tscn" id="4_nilvi"]
+[ext_resource type="AudioStream" uid="uid://dw30xm13ad6b0" path="res://Assets/Audio/SoundFX/wind loop.ogg" id="3_4pbju"]
+[ext_resource type="PackedScene" uid="uid://bsyhpnwvtnylf" path="res://Scenes/window_input.tscn" id="4_ix45o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2kct6"]
 font_size = 30
@@ -114,7 +114,7 @@ _data = {
 "test": SubResource("Animation_atah1")
 }
 
-[node name="Main Menu" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 script = ExtResource("1_fv65s")
 metadata/_edit_vertical_guides_ = [-202.0, 640.0]
 
@@ -192,7 +192,7 @@ render_target_update_mode = 4
 [node name="Menu View" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_7hhct")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_18cqm")
+stream = ExtResource("3_4pbju")
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AudioStreamPlayer2D"]
@@ -201,7 +201,7 @@ libraries = {
 "": SubResource("AnimationLibrary_nffjw")
 }
 
-[node name="WindowInput" parent="." instance=ExtResource("4_nilvi")]
+[node name="WindowInput" parent="." instance=ExtResource("4_ix45o")]
 
 [connection signal="pressed" from="Node2D/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Node2D/Options" to="." method="_on_Options_pressed"]

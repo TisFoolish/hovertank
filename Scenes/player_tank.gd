@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 @export var MAX_SPEED = 100
 #Rotation Speed in ????
-@export var MAX_ROTATION_SPEED = 0.05
+@export var MAX_ROTATION_SPEED = 0.03
 
 @export var ACCLERATION = 60
 @export var MAX_ANGULAR_ACC = .25
