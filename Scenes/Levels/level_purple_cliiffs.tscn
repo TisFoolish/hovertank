@@ -34,6 +34,8 @@ size = Vector3(117.085, 17.5828, 82.3776)
 size = Vector3(57.7411, 31.7128, 16.3228)
 
 [node name="Level_PurpleCliiffs" type="StaticBody3D"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="PurpleCliffsComplexShapeCollider" parent="." instance=ExtResource("1_qli5r")]
 

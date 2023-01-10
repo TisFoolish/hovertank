@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cw2x8rfoi7ad5"
+path="res://.godot/imported/Gun 03.ogg-30178cf9789514950b46c2b931813394.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SoundFX/Gun 03.ogg"
+dest_files=["res://.godot/imported/Gun 03.ogg-30178cf9789514950b46c2b931813394.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

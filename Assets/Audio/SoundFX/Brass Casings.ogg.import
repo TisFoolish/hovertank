@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bipbejtnn43gv"
+path="res://.godot/imported/Brass Casings.ogg-310fcbd0dea7475a416b565f294d0c6a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SoundFX/Brass Casings.ogg"
+dest_files=["res://.godot/imported/Brass Casings.ogg-310fcbd0dea7475a416b565f294d0c6a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

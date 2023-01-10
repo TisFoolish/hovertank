@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0tca402shtyi"]
+
+[ext_resource type="PackedScene" uid="uid://8e3ffov7vtw" path="res://Scenes/world_environment.tscn" id="1_12tgt"]
+[ext_resource type="PackedScene" uid="uid://csw42kllprn5w" path="res://Scenes/player_tank.tscn" id="2_4t0b1"]
+[ext_resource type="PackedScene" uid="uid://bhfkuuoayy0ak" path="res://Scenes/Levels/level_purple_cliiffs.tscn" id="3_yxphp"]
+[ext_resource type="PackedScene" uid="uid://bsyhpnwvtnylf" path="res://Scenes/window_input.tscn" id="4_bdbwk"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_12tgt")]
+
+[node name="PlayerTank" parent="." instance=ExtResource("2_4t0b1")]
+transform = Transform3D(-0.816873, 0, -0.576817, 0, 1, 0, 0.576817, 0, -0.816873, -20.3686, 1, -11.8328)
+
+[node name="Level_PurpleCliiffs" parent="." instance=ExtResource("3_yxphp")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.220959, -7.62939e-06, -0.0158539)
+
+[node name="WindowInput" parent="." instance=ExtResource("4_bdbwk")]

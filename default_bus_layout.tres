@@ -1,10 +1,10 @@
 [gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cspga5g11ab5c"]
 
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_ahax4"]
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_g4fmd"]
 resource_name = "LowPassFilter"
 cutoff_hz = 276.0
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_btswx"]
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_s1cg0"]
 resource_name = "Reverb"
 room_size = 0.39
 wet = 0.26
@@ -17,7 +17,7 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_ahax4")
+bus/1/effect/0/effect = SubResource("AudioEffectLowPassFilter_g4fmd")
 bus/1/effect/0/enabled = true
 bus/2/name = &"MenuMusic"
 bus/2/solo = false
@@ -31,5 +31,5 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -4.76812
 bus/3/send = &"Master"
-bus/3/effect/0/effect = SubResource("AudioEffectReverb_btswx")
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_s1cg0")
 bus/3/effect/0/enabled = true

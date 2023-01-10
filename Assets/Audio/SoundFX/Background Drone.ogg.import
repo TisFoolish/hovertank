@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cc8c1svlutyq5"
+path="res://.godot/imported/Background Drone.ogg-864518ac6d8e29314b8d4faeffc7d515.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SoundFX/Background Drone.ogg"
+dest_files=["res://.godot/imported/Background Drone.ogg-864518ac6d8e29314b8d4faeffc7d515.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

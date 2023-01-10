@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgjaxl70vlnda"]
+
+[ext_resource type="PackedScene" uid="uid://cryqo7jrmlxlf" path="res://Scenes/Main Menu.tscn" id="1_0ku0f"]
+[ext_resource type="Script" path="res://Scripts/input.gd" id="2_id83t"]
+
+[sub_resource type="GDScript" id="GDScript_qujgn"]
+script/source = "extends SubViewport
+
+func _ready():
+	set_res()
+	
+
+
+func _on_window_input_resolution_changed():
+	set_res()
+
+
+func set_res():
+	var mode = DisplayServer.window_get_mode()
+	if (mode == 3 || mode == 4):
+#		res_workaround_hack(self, DisplayServer.window_get_size_with_decorations())
+		size = DisplayServer.window_get_size_with_decorations()
+	else:
+#		res_workaround_hack(self, DisplayServer.window_get_size())
+		size = DisplayServer.window_get_size()
+
+#See Main Menu.gd for info on this function
+
+#func res_workaround_hack(svp:SubViewport, correct_size:Vector2i):
+#	for i in 3: # with one iteration, this fails up to 50% of the time 
+#		await get_tree().process_frame
+#		svp.size = correct_size
+
+"
+
+[node name="Master Node" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+script = SubResource("GDScript_qujgn")
+
+[node name="Main Menu" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_0ku0f")]
+
+[node name="WindowInput" type="Node" parent="."]
+script = ExtResource("2_id83t")
+
+[connection signal="resolution_changed" from="WindowInput" to="SubViewportContainer/SubViewport" method="_on_window_input_resolution_changed"]
+[connection signal="resolution_changed" from="WindowInput" to="SubViewportContainer/SubViewport/Main Menu" method="_on_window_input_resolution_changed"]
