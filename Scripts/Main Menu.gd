@@ -12,7 +12,7 @@ func _ready():
 
 func _process(delta):
 	if(start == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
-		get_tree().change_scene_to_file("res://Scenes/Base.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/Base.tscn")
 	elif(exiting == true && $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position):
 		get_tree().quit() 
 	pass
