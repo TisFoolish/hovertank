@@ -23,21 +23,12 @@ func _process(delta):
 	if(Input.is_action_pressed("fire_weapon")):
 		$AnimationPlayer.play("fire")
 		get_node("../vehicle_v2_tscn/barrels/barrel_spin").play("barrel_spin")
-		
+
 	else:
 		$AnimationPlayer.stop(false)
-	pass # Replace with function body.
 	
 	if(Input.is_action_just_released("fire_weapon")):
 		get_node("../vehicle_v2_tscn/barrels/barrel_spin").play("barrel_spin_down")
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	if($AnimationPlayer.is_playing() == true):
-#		match $AnimationPlayer.
-
 
 func _physics_process(delta):
 	velocity = global_position-pre_pos
@@ -48,13 +39,12 @@ func _on_timer_timeout():
 		var newBullet = bullet.instantiate()
 		get_tree().get_root().add_child(newBullet)
 		
-#		Tried making the gun use the gun sounds at random when firing, but it cuts off some of them
-#		and doesn't sound very good. They might all need to be the same length as Gun 01?
-#		gunsound.stream = bulletSounds[randi_range(0,4)]
-		CharacterBody3D
+#        Tried making the gun use the gun sounds at random when firing, but it cuts off some of them
+#        and doesn't sound very good. 
+#        gunsound.stream = bulletSounds[randi_range(0,4)]
+
 		gunsound.play()
 		newBullet.speed = 100
 		newBullet.position = $BulletSpawnPoint.global_position
 		newBullet.rotation = $BulletSpawnPoint.global_rotation
 		newBullet.velocity = Vector3(-global_transform.basis.z) + velocity
-
